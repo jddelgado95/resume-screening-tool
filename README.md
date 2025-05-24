@@ -50,6 +50,30 @@ Return ranked results via API
 (Optional) Add resume role classification using a trained classifier
 (Optional) Add frontend or Streamlit interface
 
+resume-screening-tool/
+├── app/
+│ ├── main.py
+│ ├── api/
+│ │ ├── endpoints.py
+│ ├── core/
+│ │ ├── ranking.py
+│ │ ├── classification.py
+│ ├── models/
+│ │ ├── resume_classifier.pkl
+│ ├── utils/
+│ │ ├── parser.py
+│ │ ├── nlp_utils.py
+│ ├── data/
+│ │ ├── resumes/
+│ │ ├── job_descriptions/
+│ └── templates/
+│ └── index.html (optional for frontend)
+├── requirements.txt
+├── .gitignore
+└── .github/
+└── workflows/
+└── python-app.yml
+
 To run:
 $ python -m venv venv
 $ source venv/bin/activate
