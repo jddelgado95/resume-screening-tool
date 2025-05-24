@@ -49,3 +49,21 @@ Compute cosine similarity scores
 Return ranked results via API
 (Optional) Add resume role classification using a trained classifier
 (Optional) Add frontend or Streamlit interface
+
+To run:
+$ python -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+$ python -m spacy download en_core_web_sm
+$uvicorn app.main:app --reload
+
+Post the job description:
+$ curl -X POST "http://localhost:8000/upload-job-description" -F "file=@/Users/juandiegodelgado/learning-sw/ai/resume-screening-tool/app/data/job_descriptions/senior_support_engineer_chronicle.pdf"
+
+Output:
+{"message":"Job description uploaded and processed."}%
+
+Score a resume:
+$ curl -X POST "http://localhost:8000/score-resume" -F "file=@/Users/juandiegodelgado/learning-sw/ai/resume-screening-tool/app/data/resumes/SW\_\_Engineer_JuanDiego_Delgado_CV.pdf"
+{"similarity_score":0.052825601517136014}%
+$deactivate
