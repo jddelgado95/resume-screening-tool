@@ -4,3 +4,6 @@ spacy
 scikit-learn
 python-multipart       # for file uploads
 pdfplumber             # for PDF text extraction
+pydantic
+pytest
+httpx
