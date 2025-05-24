@@ -2,6 +2,8 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from app.nlp import preprocess_text, compute_similarity
 from app.utils import extract_text_from_pdf
 from app.models import SimilarityResponse
+from fastapi.middleware.cors import CORSMiddleware
+from app.api.endpoints import router
 
 app = FastAPI()
 
@@ -32,3 +34,12 @@ async def score_resume(file: UploadFile = File(...)):
     resume_text = preprocess_text(resume_text)
     score = compute_similarity([job_description_text, resume_text])
     return SimilarityResponse(similarity_score=score)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(router)
