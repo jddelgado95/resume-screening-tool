@@ -79,7 +79,7 @@ $ python -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 $ python -m spacy download en_core_web_sm
-$uvicorn app.main:app --reload
+$ uvicorn app.main:app --reload
 
 Post the job description:
 $ curl -X POST "http://localhost:8000/upload-job-description" -F "file=@/Users/juandiegodelgado/learning-sw/ai/resume-screening-tool/app/data/job_descriptions/senior_support_engineer_chronicle.pdf"
@@ -91,3 +91,19 @@ Score a resume:
 $ curl -X POST "http://localhost:8000/score-resume" -F "file=@/Users/juandiegodelgado/learning-sw/ai/resume-screening-tool/app/data/resumes/SW\_\_Engineer_JuanDiego_Delgado_CV.pdf"
 {"similarity_score":0.052825601517136014}%
 $deactivate
+
+conda create --name myenv python=3.11
+conda activate myenv
+
+https://www.anaconda.com/docs/getting-started/miniconda/install#mac-os
+
+conda create -n torch-env python=3.10
+pip install numpy==1.25.0 --force-reinstall
+pip uninstall torch torchvision torchaudio
+pip cache purge # optional, clears cache to force re-download
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+pip install torch==2.2.0
+
+pip install transformers==4.31.0
+
+pip install --force-reinstall sentence-transformers==2.2.2
