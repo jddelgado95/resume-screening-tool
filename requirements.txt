@@ -1,3 +1,4 @@
+torch
 fastapi
 uvicorn
 spacy
@@ -7,3 +8,5 @@ pdfplumber             # for PDF text extraction
 pydantic
 pytest
 httpx
+sentence-transformers
+scikit-learn
